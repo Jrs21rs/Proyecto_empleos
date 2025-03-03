@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de la Empresa</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Perfil de la Empresa</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Datos de la Empresa</h2>
+            <p>Nombre: <span th:text="${company.name}"></span></p>
+            <p>Email: <span th:text="${company.email}"></span></p>
+            <p>Teléfono: <span th:text="${company.phone}"></span></p>
+        </section>
+        <section>
+            <h2>Ofertas de Empleo</h2>
+            <ul>
+                <li th:each="job : ${company.jobs}">
+                    <p><strong th:text="${job.title}"></strong></p>
+                    <p th:text="${job.description}"></p>
+                    <p>Ubicación: <span th:text="${job.location}"></span></p>
+                    <p>Salario: <span th:text="${job.salary}"></span></p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Bolsa de Empleo</p>
+    </footer>
+</body>
+</html>

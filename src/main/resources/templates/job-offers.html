@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ofertas de Empleo</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ofertas de Empleo</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+                <li><a href="register.html">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Ofertas Disponibles</h2>
+            <ul>
+                <li th:each="job : ${jobs}">
+                    <p><strong th:text="${job.title}"></strong></p>
+                    <p th:text="${job.description}"></p>
+                    <p>Ubicación: <span th:text="${job.location}"></span></p>
+                    <p>Salario: <span th:text="${job.salary}"></span></p>
+                    <p><a th:href="@{/apply/{id}(id=${job.id})}">Aplicar</a></p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Bolsa de Empleo</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil del Candidato</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Perfil del Candidato</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="/logout">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Datos Personales</h2>
+            <p>Nombre: <span th:text="${candidate.name}"></span></p>
+            <p>Email: <span th:text="${candidate.email}"></span></p>
+            <p>Teléfono: <span th:text="${candidate.phone}"></span></p>
+        </section>
+        <section>
+            <h2>Currículum</h2>
+            <h3>Experiencia Profesional</h3>
+            <ul>
+                <li th:each="experience : ${candidate.experience}">
+                    <p><strong th:text="${experience.position}"></strong> en <span th:text="${experience.company}"></span></p>
+                    <p th:text="${experience.description}"></p>
+                    <p>Desde <span th:text="${experience.startDate}"></span> hasta <span th:text="${experience.endDate}"></span></p>
+                </li>
+            </ul>
+            <h3>Formación Académica</h3>
+            <ul>
+                <li th:each="education : ${candidate.education}">
+                    <p><strong th:text="${education.degree}"></strong> en <span th:text="${education.institution}"></span></p>
+                    <p th:text="${education.field}"></p>
+                    <p>Fecha: <span th:text="${education.date}"></span></p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Bolsa de Empleo</p>
+    </footer>
+</body>
+</html>
